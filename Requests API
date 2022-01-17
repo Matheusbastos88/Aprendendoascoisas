@@ -1,0 +1,35 @@
+#Utilizei o Firebase para criar um db, apenas para poder fazer os requests.
+----------------------------------
+import requests
+
+requisicao = requests.get("https://api-rest-para-ubots-default-rtdb.firebaseio.com/.json")
+print(requisicao)
+print(requisicao.json())
+
+
+----------------------------------
+# Cria uma requisiçao com Informaçao,
+#De propósito precisa atualizar o VALOR, Pois está faltando a palavra "Ano" 
+#Propositalmente foi criado três ids com o mesmo filme, para fazer o Delete
+----------------------------------
+
+informacao = '{"Nome": "Avengers: Age of Ultron", "Valor": "2015"}'
+requisicao = requests.post("https://api-rest-para-ubots-default-rtdb.firebaseio.com/.json", data = informacao)
+print(requisicao)
+print(requisicao.json())
+
+----------------------------------
+#Requisição para Atualizar no Banco de dados
+----------------------------------
+
+informacao = '{"Nome": "Avengers: Age of Ultron", "Valor": "Ano 2015"}'
+requisicao = requests.patch("https://api-rest-para-ubots-default-rtdb.firebaseio.com/-MtTttPmHhIXa8oRNId4.json", data = informacao)
+print(requisicao)
+print(requisicao.json())
+
+----------------------------------
+#Deletando listas duplicadas,criadas propositalmente
+----------------------------------
+requisicao = requests.delete("https://api-rest-para-ubots-default-rtdb.firebaseio.com/-MtTttPmHhIXa8oRNId4.json")
+print(requisicao)
+print(requisicao.json())
